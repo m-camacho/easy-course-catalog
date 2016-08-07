@@ -35,18 +35,24 @@ let courses = [
 class App extends React.Component {
     render() {
         return (
-            <Row className="App">
-                <div className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <h2>Easy Course</h2>
-                    <h6>Practical tool to help you to manage your courses</h6>
-                </div>
-                <Col xs={12} md={6} mdOffset={3} className="main-container">
-                    <ListGroup className="course-list">
-                        {_.map(courses, (course) => <Course key={course.id} course={course} />)}
-                    </ListGroup>
-                </Col>
-            </Row>
+            <div className="app">
+                <Row className="app-header">
+                    <Col className="app-logo" xs={2} md={3}>
+                        <img src={logo} className="logo" alt="logo" />
+                    </Col>
+                    <Col xs={10} md={9}>
+                        <h2>Easy Course</h2>
+                        <h6>Practical tool to help you to manage your courses</h6>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs={12} md={6} mdOffset={3} className="main-container">
+                        <ListGroup className="course-list">
+                            {_.map(courses, (course) => <Course key={course.id} course={course} />)}
+                        </ListGroup>
+                    </Col>
+                </Row>
+            </div>
         );
     }
 }
