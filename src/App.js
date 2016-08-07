@@ -1,5 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
+import {Row, Col, ListGroup} from 'react-bootstrap';
 import logo from './logo.svg';
 import './App.css';
 import Course from './Course';
@@ -34,17 +35,18 @@ let courses = [
 class App extends React.Component {
     render() {
         return (
-            <div className="App">
+            <Row className="App">
                 <div className="App-header">
                     <img src={logo} className="App-logo" alt="logo" />
                     <h2>Easy Course</h2>
+                    <h6>Practical tool to help you to manage your courses</h6>
                 </div>
-                <div className="course-list">
-                    {_.map(courses, function(course){
-                        return <Course key={course.id} course={course} />;
-                    })}
-                </div>
-            </div>
+                <Col xs={12} md={6} mdOffset={3} className="main-container">
+                    <ListGroup className="course-list">
+                        {_.map(courses, (course) => <Course key={course.id} course={course} />)}
+                    </ListGroup>
+                </Col>
+            </Row>
         );
     }
 }

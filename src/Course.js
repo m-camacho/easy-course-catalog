@@ -1,10 +1,10 @@
 import React from 'react';
-import {FormGroup, ControlLabel, FormControl} from 'react-bootstrap';
+import {ListGroupItem, FormGroup, ControlLabel, FormControl} from 'react-bootstrap';
 
 class Course extends React.Component {
     render() {
         return (
-            <div className="course">
+            <ListGroupItem className="course">
                 <FormGroup>
                     <ControlLabel>Course Name:</ControlLabel>
                     <FormControl.Static>
@@ -17,7 +17,7 @@ class Course extends React.Component {
                         {this.props.course.description}
                     </FormControl.Static>
                 </FormGroup>
-            </div>
+            </ListGroupItem>
         );
     }
 }
