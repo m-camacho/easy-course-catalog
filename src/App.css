@@ -2,6 +2,10 @@
   margin: 0;
 }
 
+.app .row {
+  margin: 0;
+}
+
 .app-header {
   background-color: #222;
   padding: 20px;
@@ -25,7 +29,20 @@
 }
 
 .main-container {
-  text-align: left;
+  padding-top: 25px;
+}
+
+.main-container .panel-body,
+.main-container .list-group {
+  box-shadow: 2px 2px 5px #888888;
+}
+
+.main-container .panel-body {
+  background-color: #F3F3F3;
+}
+
+.main-container .course-list .course .form-group {
+  margin-bottom: 0;
 }
 
 .main-container .course-list .course .form-group .control-label {
@@ -33,5 +50,5 @@
 }
 
 .main-container .course-list .course .form-group .form-control-static {
-  padding-top: 5px;
+  padding: 0;
 }

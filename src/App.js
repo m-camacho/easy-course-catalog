@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-import {Row, Col, ListGroup} from 'react-bootstrap';
+import {Row, Col} from 'react-bootstrap';
 import logo from './logo.svg';
 import './App.css';
 import Course from './Course';
@@ -47,9 +47,9 @@ class App extends React.Component {
                 </Row>
                 <Row>
                     <Col xs={12} md={6} mdOffset={3} className="main-container">
-                        <ListGroup className="course-list">
+                        <div className="course-list">
                             {_.map(courses, (course) => <Course key={course.id} course={course} />)}
-                        </ListGroup>
+                        </div>
                     </Col>
                 </Row>
             </div>
