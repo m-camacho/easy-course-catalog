@@ -41,6 +41,11 @@
   background-color: #F3F3F3;
 }
 
+.main-container .panel-body .buttons {
+  position: absolute;
+  right: 30px;
+}
+
 .main-container .course-list .course .form-group {
   margin-bottom: 0;
 }

@@ -4,35 +4,24 @@ import {Row, Col} from 'react-bootstrap';
 import logo from './logo.svg';
 import './App.css';
 import Course from './Course';
-
-let courses = [
-    {
-        "id": "123",
-        "name": "Introduction to Advertising",
-        "description": "Learn about advertising",
-        "textbooks": [
-            {
-                "author": "Joe Smith",
-                "title": "Mobile Advertising Fundamentals"
-            },
-            {
-                "author": "Eli Hinnegan",
-                "title": "Introduction to Location-Based Advertising"
-            },
-            {
-                "author": "Edward Bernays",
-                "title": "Public Relations"
-            },
-        ]
-    },
-    {
-        "id": "654",
-        "name": "Introduction to React.js programming",
-        "description": "React.js for begginers"
-    }
-];
+import CourseStore from './CourseStore';
 
 class App extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            courses: CourseStore.getInitialState()
+        }
+    }
+    onStatusChange(courses) {
+        this.setState({courses});
+    }
+    componentDidMount() {
+        this.unsubscribe = CourseStore.listen(this.onStatusChange.bind(this));
+    }
+    componentWillUnmount() {
+        this.unsubscribe();
+    }
     render() {
         return (
             <div className="app">
@@ -48,7 +37,7 @@ class App extends React.Component {
                 <Row>
                     <Col xs={12} md={6} mdOffset={3} className="main-container">
                         <div className="course-list">
-                            {_.map(courses, (course) => <Course key={course.id} course={course} />)}
+                            {_.map(this.state.courses, (course) => <Course key={course.id} course={course} />)}
                         </div>
                     </Col>
                 </Row>
