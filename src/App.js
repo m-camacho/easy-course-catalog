@@ -1,9 +1,9 @@
 import React from 'react';
-import _ from 'lodash';
-import {Row, Col} from 'react-bootstrap';
+import {Row, Col, Button} from 'react-bootstrap';
 import logo from './logo.svg';
 import './App.css';
 import Course from './Course';
+import CourseActions from './CourseActions';
 import CourseStore from './CourseStore';
 
 class App extends React.Component {
@@ -22,6 +22,9 @@ class App extends React.Component {
     componentWillUnmount() {
         this.unsubscribe();
     }
+    handleDiscardChanges() {
+        CourseActions.discardChanges();
+    }
     render() {
         return (
             <div className="app">
@@ -36,7 +39,17 @@ class App extends React.Component {
                 </Row>
                 <Row>
                     <Col xs={12} md={6} mdOffset={3} className="main-container">
-                        <div>You can interact with the <b>Course Catalog</b>, although your changes are in memory and you can SAVE or DISCARD them.</div>
+                        <div className="save-discard-buttons">
+                            You can interact with the <b>Course</b> information, although your changes are in memory and you can
+                            <Button bsSize="small" bsStyle="link">
+                                save
+                            </Button>
+                            or
+                            <Button bsSize="small" bsStyle="link" onClick={this.handleDiscardChanges}>
+                                discard
+                            </Button>
+                            them.
+                        </div>
                         <Course course={this.state.course} />
                     </Col>
                 </Row>

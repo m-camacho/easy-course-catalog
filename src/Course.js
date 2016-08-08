@@ -22,7 +22,11 @@ class Course extends React.Component {
         }
     }
     handleEdit() {
-        this.setState({editing: true});
+        this.setState({
+            name: this.props.course.name,
+            description: this.props.course.description,
+            editing: true
+        });
     }
     handleNameChanged(e) {
         this.setState({name: e.target.value});

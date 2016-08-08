@@ -28,8 +28,17 @@
   to { transform: rotate(360deg); }
 }
 
-.main-container {
-  padding-top: 25px;
+.save-discard-buttons {
+  padding: 25px 0;
+}
+
+.save-discard-buttons button {
+  padding: 0px 8px;
+  font-size: 14px;
+}
+
+.save-discard-buttons button:focus {
+  outline: 0;
 }
 
 .main-container .panel-body,
