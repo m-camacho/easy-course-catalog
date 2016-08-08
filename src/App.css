@@ -54,18 +54,10 @@
   position: absolute;
   top: 5px;
   right: 5px;
-  opacity: 0;
-  visibility: hidden;
-  transition: display 0s, opacity 0.8s linear;
 }
 
 .main-container .panel-body {
   position: relative;
-}
-
-.main-container .panel-body:hover .buttons {
-  opacity: 1;
-  visibility: visible;
 }
 
 .main-container .panel-body .list-group {

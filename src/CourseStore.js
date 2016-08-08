@@ -24,7 +24,7 @@ const CourseStore = Reflux.createStore({
                 },
             ]
         };
-        this.course = _.clone(this.course_orig);
+        this.course = _.cloneDeep(this.course_orig);
         return this.course;
     },
     onUpdateCourse: function (name, description) {
@@ -32,8 +32,18 @@ const CourseStore = Reflux.createStore({
         this.course.description = description;
         this.trigger(this.course);
     },
+    onUpdateTextbook: function(oldone, newone) {
+        let books = this.course.textbooks;
+        for(let i=0; i < books.length; i++) {
+            if(oldone.title === books[i].title && oldone.author === books[i].author) {
+                books[i] = newone;
+                break;
+            }
+        }
+        this.trigger(this.course);
+    },
     onDiscardChanges: function() {
-        this.course = _.clone(this.course_orig);
+        this.course = _.cloneDeep(this.course_orig);
         this.trigger(this.course);
     }
 });
