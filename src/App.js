@@ -22,6 +22,9 @@ class App extends React.Component {
     componentWillUnmount() {
         this.unsubscribe();
     }
+    handleSaveCourse() {
+        CourseActions.saveCourse(this.state.course);
+    }
     handleDiscardChanges() {
         CourseActions.discardChanges();
     }
@@ -41,7 +44,7 @@ class App extends React.Component {
                     <Col xs={12} md={6} mdOffset={3} className="main-container">
                         <div className="save-discard-buttons">
                             You can interact with the <b>Course</b> information, although your changes are in memory and you can
-                            <Button bsSize="small" bsStyle="link">
+                            <Button bsSize="small" bsStyle="link" onClick={this.handleSaveCourse.bind(this)}>
                                 save
                             </Button>
                             or

@@ -22,7 +22,11 @@ class Course extends React.Component {
         }
     }
     handleEdit() {
-        this.setState({editing: true});
+        this.setState({
+            editing: true,
+            name: this.props.course.name,
+            description: this.props.course.description
+        });
     }
     handleNameChanged(e) {
         this.setState({name: e.target.value});
@@ -35,11 +39,7 @@ class Course extends React.Component {
         CourseActions.updateCourse(this.state.name, this.state.description);
     }
     handleDiscardChanges() {
-        this.setState({
-            editing: false,
-            name: this.props.course.name,
-            description: this.props.course.description
-        });
+        this.setState({editing: false});
     }
     render() {
         return (

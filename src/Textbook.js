@@ -12,7 +12,11 @@ class Textbook extends React.Component {
         }
     }
     handleEdit() {
-        this.setState({editing: true});
+        this.setState({
+            editing: true,
+            title: this.props.textbook.title,
+            author: this.props.textbook.author
+        });
     }
     handleTitleChanged(e) {
         this.setState({title: e.target.value});
@@ -27,11 +31,7 @@ class Textbook extends React.Component {
         });
     }
     handleDiscardChanges() {
-        this.setState({
-            editing: false,
-            title: this.props.textbook.title,
-            author: this.props.textbook.author
-        });
+        this.setState({editing: false});
     }
     render() {
         return (

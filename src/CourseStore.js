@@ -1,6 +1,7 @@
 import Reflux from 'reflux';
 import _ from 'lodash';
 import CourseActions from './CourseActions';
+import request from 'superagent';
 
 const CourseStore = Reflux.createStore({
     listenables: CourseActions,
@@ -45,6 +46,17 @@ const CourseStore = Reflux.createStore({
     onDiscardChanges: function() {
         this.course = _.cloneDeep(this.course_orig);
         this.trigger(this.course);
+    },
+    onSaveCourse: function (course) {
+        let self = this;
+        request('PUT', '/course/' + course.id).then(function (data) {
+            console.log(data);
+        }, function (err) {
+            // Host is unreachable but we will handle as it succeeded
+            self.course_orig = _.cloneDeep(course);
+            self.course = _.cloneDeep(course);
+            self.trigger(self.course);;
+        });
     }
 });
 

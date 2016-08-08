@@ -5,7 +5,8 @@ const CourseActions = Reflux.createActions([
     "updateTextbook",
     "deleteTextbook",
     "addTextbook",
-    "discardChanges"
+    "discardChanges",
+    "saveCourse"
 ]);
 
 export default CourseActions;

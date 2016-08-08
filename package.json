@@ -10,7 +10,8 @@
     "react": "^15.2.1",
     "react-bootstrap": "^0.30.2",
     "react-dom": "^15.2.1",
-    "reflux": "^0.4.1"
+    "reflux": "^0.4.1",
+    "superagent": "^2.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
