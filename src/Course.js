@@ -13,25 +13,81 @@ import Textbook from './Textbook';
 import CourseActions from './CourseActions';
 
 class Course extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            editing: false,
+            name: props.course.name,
+            description: props.course.description
+        }
+    }
+    handleEdit() {
+        this.setState({editing: true});
+    }
+    handleNameChanged(e) {
+        this.setState({name: e.target.value});
+    }
+    handleDescChanged(e) {
+        this.setState({description: e.target.value});
+    }
+    handleSaveChanges() {
+        this.setState({editing: false});
+        CourseActions.updateCourse(this.state.name, this.state.description);
+    }
+    handleDiscardChanges() {
+        this.setState({editing: false});
+    }
     render() {
         return (
             <Panel className="course">
-                <ButtonGroup className="buttons">
-                    <Button bsSize="xsmall" bsStyle="primary">
-                        <Glyphicon glyph="pencil"/>
-                    </Button>
-                </ButtonGroup>
+                {this.state.editing
+                    ?
+                    <ButtonGroup className="buttons">
+                        <Button bsSize="xsmall" bsStyle="primary" onClick={this.handleSaveChanges.bind(this)}>
+                            <Glyphicon glyph="ok"/>
+                        </Button>
+                        <Button bsSize="xsmall" bsStyle="danger" onClick={this.handleDiscardChanges.bind(this)}>
+                            <Glyphicon glyph="remove"/>
+                        </Button>
+                    </ButtonGroup>
+                    :
+                    <ButtonGroup className="buttons">
+                        <Button bsSize="xsmall" bsStyle="primary" onClick={this.handleEdit.bind(this)}>
+                            <Glyphicon glyph="pencil"/>
+                        </Button>
+                    </ButtonGroup>
+                }
                 <FormGroup>
                     <ControlLabel>Course Name:</ControlLabel>
-                    <FormControl.Static>
-                        {this.props.course.name}
-                    </FormControl.Static>
+                    {this.state.editing
+                        ?
+                        <FormControl
+                            type="text"
+                            value={this.state.name}
+                            placeholder="Course name"
+                            onChange={this.handleNameChanged.bind(this)}
+                        />
+                        :
+                        <FormControl.Static>
+                            {this.props.course.name}
+                        </FormControl.Static>
+                    }
                 </FormGroup>
                 <FormGroup>
                     <ControlLabel>Description:</ControlLabel>
-                    <FormControl.Static>
-                        {this.props.course.description}
-                    </FormControl.Static>
+                    {this.state.editing
+                        ?
+                        <FormControl
+                            type="text"
+                            value={this.state.description}
+                            placeholder="Course name"
+                            onChange={this.handleDescChanged.bind(this)}
+                        />
+                        :
+                        <FormControl.Static>
+                            {this.props.course.description}
+                        </FormControl.Static>
+                    }
                 </FormGroup>
                 {
                     _.isEmpty(this.props.course.textbooks)

@@ -27,9 +27,14 @@ const CourseStore = Reflux.createStore({
         this.course = _.clone(this.course_orig);
         return this.course;
     },
+    onUpdateCourse: function (name, description) {
+        this.course.name = name;
+        this.course.description = description;
+        this.trigger(this.course);
+    },
     onDiscardChanges: function() {
         this.course = _.clone(this.course_orig);
-        this.trigger(this.courses);
+        this.trigger(this.course);
     }
 });
 
