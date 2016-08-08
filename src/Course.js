@@ -13,18 +13,12 @@ import Textbook from './Textbook';
 import CourseActions from './CourseActions';
 
 class Course extends React.Component {
-    deleteCourse() {
-        CourseActions.deleteCourse(this.props.course);
-    }
     render() {
         return (
             <Panel className="course">
                 <ButtonGroup className="buttons">
                     <Button bsSize="xsmall" bsStyle="primary">
                         <Glyphicon glyph="pencil"/>
-                    </Button>
-                    <Button bsSize="xsmall" bsStyle="danger" onClick={this.deleteCourse.bind(this)}>
-                        <Glyphicon glyph="trash"/>
                     </Button>
                 </ButtonGroup>
                 <FormGroup>

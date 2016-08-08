@@ -44,16 +44,28 @@
 .main-container .panel-body .buttons {
   position: absolute;
   right: 30px;
+  opacity: 0;
+  visibility: hidden;
+  transition: display 0s, opacity 0.8s linear;
 }
 
-.main-container .course-list .course .form-group {
+.main-container .panel-body:hover .buttons {
+  opacity: 1;
+  visibility: visible;
+}
+
+.main-container .panel-body .list-group {
+  margin: 0;
+}
+
+.main-container .course .form-group {
   margin-bottom: 0;
 }
 
-.main-container .course-list .course .form-group .control-label {
+.main-container .course .form-group .control-label {
   margin-bottom: 0;
 }
 
-.main-container .course-list .course .form-group .form-control-static {
+.main-container .course .form-group .form-control-static {
   padding: 0;
 }

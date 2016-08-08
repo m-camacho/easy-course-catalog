@@ -10,11 +10,11 @@ class App extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            courses: CourseStore.getInitialState()
+            course: CourseStore.getInitialState()
         }
     }
-    onStatusChange(courses) {
-        this.setState({courses});
+    onStatusChange(course) {
+        this.setState({course});
     }
     componentDidMount() {
         this.unsubscribe = CourseStore.listen(this.onStatusChange.bind(this));
@@ -36,9 +36,8 @@ class App extends React.Component {
                 </Row>
                 <Row>
                     <Col xs={12} md={6} mdOffset={3} className="main-container">
-                        <div className="course-list">
-                            {_.map(this.state.courses, (course) => <Course key={course.id} course={course} />)}
-                        </div>
+                        <div>You can interact with the <b>Course Catalog</b>, although your changes are in memory and you can SAVE or DISCARD them.</div>
+                        <Course course={this.state.course} />
                     </Col>
                 </Row>
             </div>
